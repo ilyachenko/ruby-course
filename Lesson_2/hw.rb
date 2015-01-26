@@ -164,26 +164,23 @@ end
 puts "Any?: " + f.to_s
 
 # Реализация reduce
-def reduce array
-  value = false
+# reduce([1,2,3,4], 2) {|acc, element| acc + element} => 12
+def reduce (array, value)
+  value = value
   for arr in array
-    if !value
-      value = arr
-    else
-      value = yield(value, arr)
-    end
+    value = yield(value, arr)
   end
   return value
 end
 
-g = reduce (["abc", "def", 123, 456]) do |a, b|
-  a.to_s + "::" + b.to_s
-end
+g = reduce([1,2,3,4], 48) {|acc, element| acc / element}
 
 puts "Reduce: " + g.to_s
 
-e = reduce ([0, 1, 2, 3]) do |a, b|
-  a + b
-end
+e = reduce([1, 2, 3, 4], 2) {|acc, element| acc + element}
 
 puts "Reduce: " + e.to_s
+
+f = reduce(['a', 'b', 'c'], 'z') {|acc, letter| letter > 'b' ? acc + letter : acc }
+
+puts "Reduce: " + f.to_s
