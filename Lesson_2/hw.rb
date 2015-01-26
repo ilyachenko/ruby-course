@@ -103,23 +103,18 @@ puts "Select: " + b.to_s
 
 # Реализация detect
 def detect array
-  newArr = [];
+  newArr = '';
   for arr in array
     if yield(arr)
-      newArr << yield(arr)
-    elsif yield(arr) == nil && newArr.length != 0
+      newArr = arr
       break
     end
   end
-  newArr
+  return newArr
 end
 
 c = detect ([-5, 2, -3, 10, 1, -4]) do |arr|
-  if arr > 0
-    arr * arr
-  else
-    nil
-  end
+  arr > 0
 end
 
 puts "Detect: " + c.to_s
