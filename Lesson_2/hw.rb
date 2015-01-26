@@ -120,7 +120,7 @@ end
 puts "Detect: " + c.to_s
 
 # Реализация all
-def all array
+def all? array
   for arr in array
     if !yield(arr)
       return false
@@ -130,18 +130,18 @@ def all array
   true
 end
 
-d = all ([10, 1, -4]) do |arr|
+d = all? ([10, 1, -4]) do |arr|
   arr > 0
 end
 puts "All: " + d.to_s
 
-d = all ([10, 1]) do |arr|
+d = all? ([10, 1]) do |arr|
   arr > 0
 end
 puts "All: " + d.to_s
 
-# Реализация any
-def any array
+# Реализация any?
+def any? array
   for arr in array
     if yield(arr)
       return true
@@ -151,17 +151,17 @@ def any array
   false
 end
 
-e = any ([-5, 2, -3, 10, 1, -4]) do |arr|
+e = any? ([-5, 2, -3, 10, 1, -4]) do |arr|
   arr > 0
 end
 
-puts "Any: " + e.to_s
+puts "Any?: " + e.to_s
 
-f = any ([5, 2, 3, 10, 1]) do |arr|
+f = any? ([5, 2, 3, 10, 1]) do |arr|
   arr < 0
 end
 
-puts "Any: " + f.to_s
+puts "Any?: " + f.to_s
 
 # Реализация reduce
 def reduce array
