@@ -173,7 +173,7 @@ def reduce (array, value)
   return value
 end
 
-g = reduce([1,2,3,4], 48) {|acc, element| acc / element}
+g = reduce([2, 2], 20) {|acc, element| acc / element}
 
 puts "Reduce: " + g.to_s
 
