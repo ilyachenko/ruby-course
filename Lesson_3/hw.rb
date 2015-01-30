@@ -145,6 +145,20 @@ end
 
 # p localMax ([1,2,3,1,4,5,1])
 
+# Локальные максимумы через итератор
+
+def localMaxByIterator array
+  newArr = []
+  array.each_index {|i|
+    if i != 0 && i<array.length-1 && array[i]>array[i-1] && array[i]>array[i+1]
+      newArr << array[i]
+    end
+  }
+  newArr
+end
+
+p localMaxByIterator ([1,2,3,1,4,5,1])
+
 # Сортировка массива -чтобы числа шли двумя группами чётные  в порядке убывания и нечетные в порядке убывания
 def sortAnEven array
   arrEven = []
@@ -152,7 +166,7 @@ def sortAnEven array
   for arr in array
     arr.to_i.even? ? arrEven << arr : arrNotEven << arr
   end
-  arrEven.sort{|a,b| a<=>b} + arrNotEven.sort{|a,b| a<=>b}
+  arrEven.sort + arrNotEven.sort
 end
 
 # p sortAnEven ([4,1,6,3,5,3,1,2,8])
@@ -174,8 +188,12 @@ end
 def merge hash1, hash2
   acc = {}
   hash1.each do |key, value|
-    acc.store(:key, value)
+    acc.store(key, value)
   end
+  hash2.each do |key, value|
+    acc.store(key, value)
+  end
+  acc
 end
 
-# p merge({ "a" => 100, "b" => 200 }, { "b" => 254, "c" => 300 })
+# p merge({ "a" => 100, "b" => 200 }, { "c" => 254, "d" => 300 })
