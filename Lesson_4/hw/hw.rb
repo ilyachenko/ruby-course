@@ -17,9 +17,11 @@ def map arr, &block
   end
 end
 
-a = map([1,2,3]) do |el|
-  el * el
-end
+# a = map([1,2,3]) do |el|
+#   el * el
+# end
+
+# p map([1,2,3]) {|el| el * el}
 
 # puts "Map by reduce: " + a.to_s
 
@@ -29,7 +31,7 @@ def select array, &block
   reduce(array, []) do |sum, el|
     value = block.call(el)
     if value
-      sum << value
+      sum << el
     else
       sum
     end
@@ -37,9 +39,7 @@ def select array, &block
 end
 
 b = select ([-5, 2, -3, 10, 1, -4]) do |arr|
-  if arr > 0
-    arr * arr
-  end
+  arr > 0
 end
 
 # puts "Select by reduce: " + b.to_s
@@ -71,22 +71,43 @@ end
 # ary.count{|x|x%2==0}  #=> 3
 
 def count array, &block
-  _sum = ''
-  reduce(array, []) do |sum, el|
-    value = block.call(el)
-    if value
-      sum << el
+  # raise 'An error has occured'
+  begin
+    if block
+      _sum = ''
+      reduce(array, []) do |sum, el|
+        value = block.call(el)
+        if value
+          sum << el
+        end
+        _sum = sum
+      end
+      _sum.length
+    else
+      array.length
     end
-    _sum = sum
+  rescue
+    raise
   end
-  _sum.length
 end
 
-c = count ([1,2,4,3,0,-1,3,9]) do |arr|
-  arr > 2
-end
+# ??????????????????????????????????
+# c = count ([1,2,4,3,0,-1,3,9]) do |arr|
+#   arr > 2
+# end
+
+# puts "Count bigger than 2: " + c.to_s
+
+c = count ([1,2,4,3,0,-1,3,9])
 
 # puts "Count: " + c.to_s
+
+# ???????????????????????????
+# c = count ("qwe") do |arr|
+#   arr > 2
+# end
+
+# puts "Count fail " + c.to_s
 
 # Реализация all
 def all? array, &block
@@ -157,7 +178,7 @@ def localMaxByIterator array
   newArr
 end
 
-p localMaxByIterator ([1,2,3,1,4,5,1])
+# p localMaxByIterator ([1,2,3,1,4,5,1])
 
 # Сортировка массива -чтобы числа шли двумя группами чётные  в порядке убывания и нечетные в порядке убывания
 def sortAnEven array
@@ -204,17 +225,5 @@ end
 def reverse (arr)
   reduce arr, [] do |acc, elem|
     acc.unshift(elem) # или acc = [elem] + acc
-  end
-end
-
-# sort another variant
-
-sort do |e1, e2|
-  if e1%2 == 0 and e2%2==1
-    -1
-  elsif e1%2==1 and e2%2==0
-    1
-  else
-    e2 <=> e1
   end
 end
