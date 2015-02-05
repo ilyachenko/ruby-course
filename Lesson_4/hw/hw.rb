@@ -86,7 +86,8 @@ def count array, &block
     else
       array.length
     end
-  rescue
+  rescue Exception => e
+    p e.message
     raise
   end
 end

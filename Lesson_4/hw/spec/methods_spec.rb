@@ -43,7 +43,7 @@ describe 'count' do
   end
   # ??????????????
   it "raises" do
-    #expect { count("qwe") }.to raise_error
+    expect { count("qwe") }.to raise_error
   end
 end
 
