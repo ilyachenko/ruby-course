@@ -55,7 +55,7 @@ class Circle
       cy @cy
       r @r
       fill @fill
-      border "yellow"
+      boolshit "nothing"
     end
   end
 end
