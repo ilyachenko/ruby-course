@@ -1,9 +1,11 @@
-#\ -w -p 8765
+#\ -w -p 8765 
 use Rack::Reloader, 0
 use Rack::ContentLength
 
-app = proc do |env|
-  [ 200, {'Content-Type' => 'text/plain'}, ["a"] ]
-end
+require File.join(File.dirname(__FILE__), 'product.rb')
+require File.join(File.dirname(__FILE__), 'store.rb')
 
-run app
+Product.new("Name1", 121).save
+Product.new("Name2", 202).save
+
+run Store.new

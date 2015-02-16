@@ -1,24 +1,20 @@
 class Store
-
-  Product.new("Name1", 121).save
-  Product.new("Name2", 202).save
-
   def call(env)
+    status = 200
     q = env['PATH_INFO']
     name = q.split('/')[1];
     html = ''
     if(name)
       product = Product.find(name)
-      if Product.find(name)
+      if product
         html = product.to_html
       else
         html = "Product not found"
+        status = 401
       end
     else
-      Product.all do |i|
-        html += "<div style='border: 1px solid red; width: 300px;'>" + i.to_html + "</div>"
-      end
+      html = Product.to_html
     end
-    [200, {'Content-Type' => 'text/html'}, [html]]
+    [status, {'Content-Type' => 'text/html'}, [html]]
   end
 end
