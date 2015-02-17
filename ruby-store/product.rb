@@ -30,19 +30,16 @@ class Product
         return e
       end
     }
-    return nil
   end
 
   def self.to_html
-    html = ''
-    @@products.each do |v|
-      html += v.to_html
+    @@products.reduce('') do |html, value|
+      html + value.to_html
     end
-    return html
   end
 
   def to_html
-    if !self
+    if self == nil
       "<div>Not found</div>"
     else
       "<div><b>Name: </b> #{self.name}<br><b>Price:</b> #{self.price}</div>"
