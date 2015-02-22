@@ -4,6 +4,9 @@ use Rack::ContentLength
 
 system "clear"
 
+require "colorize"
+require "awesome_print"
+
 require File.expand_path("./static_middleware.rb", "middleware")
 require File.expand_path("./session_middleware.rb", "middleware")
 require File.expand_path("./product.rb", "app")

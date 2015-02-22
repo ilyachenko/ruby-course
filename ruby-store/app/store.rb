@@ -4,7 +4,6 @@ class Store
   include Layout
 
   def call(env)
-    ap env
     request = Rack::Request.new(env)
     status = 200
     case request.path
