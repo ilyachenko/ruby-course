@@ -3,9 +3,11 @@ class Product
 
   attr_reader :name
   attr_reader :price
+  attr_reader :desc
+  attr_reader :img
 
-  def initialize(name, price)
-    @name, @price = name, price
+  def initialize(name, price, desc, img)
+    @name, @price, @desc, @img = name, price, desc, img
   end
 
   def save
@@ -39,11 +41,15 @@ class Product
   end
 
   def to_html
-    if self == nil
-      "<div>Not found</div>"
-    else
-      "<div><b>Name: </b> #{self.name}<br><b>Price:</b> #{self.price}</div>"
-    end
+    "<div class='item'>
+      <div class='box'>
+        <div><a href='#{self.name}'>#{self.name}</a></div>
+        <div class='price'>#{self.price}$</div>
+        <div><i>#{self.desc}</i></div>
+      </div>
+      
+      <div><a href='#{self.name}'><img src='#{self.img}'></a></div>
+    </div>"
   end
 
 end
