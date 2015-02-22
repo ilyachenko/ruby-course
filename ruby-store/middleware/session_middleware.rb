@@ -12,7 +12,6 @@ class Session
     request = Rack::Request.new(env)
     token = request.cookies["AUTH_TOKEN"]
     if token && @@session[token]
-      puts "token exist".red
       @@session[token]["counter"] = @@session[token]["counter"] + 1
       env['session_counter'] = @@session[token]["counter"]
       env['last_visit'] = @@session[token]["visit_time"]
