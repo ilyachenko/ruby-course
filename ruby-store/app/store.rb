@@ -1,3 +1,4 @@
+require_relative 'product.rb'
 require_relative 'layout.rb'
 
 class Store
@@ -14,10 +15,11 @@ class Store
       if pr
         html = pr.to_html
       else
+        status = 404
         html = "Sorry, No Such Product"
       end
     else
-      status = 400
+      status = 404
       html = "Sorry, No Such Page"
     end
     counter = env['session_counter'] ? env['session_counter'] : 1

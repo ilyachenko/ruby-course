@@ -8,7 +8,7 @@ class Rescue
     begin
       @nnext.call(env)
     rescue Exception => e
-      [404, {'Content-Type' => 'text/html'}, ["Error in app: " + e.message]]
+      [500, {'Content-Type' => 'text/html'}, ["Error in app: " + e.message]]
     end
 
   end

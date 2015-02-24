@@ -20,6 +20,8 @@ class Static
   def call(env)
     name = env['PATH_INFO']
     case name.to_s
+    when /(\/\w+)*.html$/
+      read_file(name, "text/html");
     when /(\/\w+)*.css$/
       read_file(name, "text/css");
     when /(\/\w+)*.img$/

@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-require_relative '../product.rb'
+require_relative '../app/product.rb'
 
 describe Product do
 
@@ -7,8 +7,8 @@ describe Product do
     described_class.purge
   end
 
-  let(:product1){described_class.new("Name1", 121)}
-  let(:product2){described_class.new("Name2", 202)}
+  let(:product1){described_class.new("Name1", 121, "desc", "/img.jpg")}
+  let(:product2){described_class.new("Name2", 202, "desc", "/img.jpg")}
   # есть ещё subject
   it "counts product" do
     expect(described_class.count).to eq(0)
@@ -39,10 +39,6 @@ describe Product do
     product2.save
     expect( described_class.find( "Name1" ) ).to eq( product1 )
     expect( described_class.find( "Name2" ) ).to eq( product2 )
-  end
-
-  it "html of product" do
-
   end
 
 end
