@@ -189,3 +189,11 @@ body {
  .price {
  	color: rgb(255, 149, 149);
  }
+
+ .product_name {
+  float: left;
+  display: block;
+  padding-right: 20px;
+ }
+
+ 

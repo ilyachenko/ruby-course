@@ -1,0 +1,12 @@
+
+<% @products.each do |pr| %>
+<div class='item'>
+	<div class='box'>
+			<div class='product_name'><a href='<%= pr.name %>'><%= pr.name %></a></div>
+			<div class='price'><%= pr.price %>$</div>
+			<button type='button' data-id="<%= pr.name %>" class='btn btn-default btn-xs addToCart'>Add to cart</button>
+			<div><i><%= pr.desc %></i></div>
+	</div>
+	<div><a href='<%= pr.name %>'><img src='<%= pr.img %>'></a></div>
+</div>
+<% end %>

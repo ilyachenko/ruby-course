@@ -1,0 +1,25 @@
+<% if @products.length > 0 %>
+<h3>Cart:</h3>
+	<% @products.each do |k,v| %>
+		<div>
+			<div>
+			<a href='<%= k.name %>'><%= k.name %></a> (Value: <%= v %> Pay: <%= v * k.price %>$) 
+			<a href="#" data-id="<%= k.name %>" class="cart_remove_prod" style="color: rgb(255, 149, 149);">remove</a>
+			</div>
+		</div>
+	<% end %>
+	<form class="form-inline order">
+		<div style="padding-top: 20px;">
+			<input type="text" class="form-control" id="order_name" placeholder="Name">
+		</div>
+		<div style="padding-top: 20px;">
+			<input type="email" class="form-control" id="order_mail" placeholder="email">
+		</div>
+		<button type="submit" class="btn btn-default" style="margin-top: 20px;">Get Order</button>
+	</form>
+	<br>
+<% else %>
+	<h3>Cart is empty</h3>
+<% end %>
+
+<a href="/"><< Back to store</a>

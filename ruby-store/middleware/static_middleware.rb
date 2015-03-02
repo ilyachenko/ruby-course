@@ -1,3 +1,7 @@
+# todo
+# {'Content-Type' => 'application/octet-stream'}
+# подставлять расширения через hash таблицу
+
 class Static
 
   @@public_folder = "public/"
@@ -22,6 +26,8 @@ class Static
     case name.to_s
     when /(\/\w+)*.html$/
       read_file(name, "text/html");
+    when /(\/\w+)*.js$/
+      read_file(name, "application/x-javascript");
     when /(\/\w+)*.css$/
       read_file(name, "text/css");
     when /(\/\w+)*.img$/

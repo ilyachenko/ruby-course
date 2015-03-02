@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,22 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="img/favicon.ico">
+    <link rel="icon" href="/img/favicon.ico">
 
     <title>Ruby Store</title>
 
     <!-- Bootstrap core CSS -->
-      <link href="styles/bootstrap.min.css" rel="stylesheet">
+      <link href="/styles/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="styles/my.css" rel="stylesheet">
-
+    <link href="/styles/my.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery.js"></script>
   </head>
 
   <body>
 
     <div class="counter">
-    {{counter}} {{last_visit}}
+    Visit counter: <%= @counter %> 
+    <% if @last_visit %>
+      Last visit: 
+      <%= @last_visit %>
+    <% end %>
     </div>
 
     <div class="site-wrapper">
@@ -32,7 +35,7 @@
         <div class="cover-container">
 
           <div class="inner cover">
-            {{content}}
+            <%= yield %>
           </div>
 
           <div class="mastfoot">
@@ -46,6 +49,6 @@
       </div>
 
     </div>
-
+  <script type="text/javascript" src="/js/my.js"></script>
   </body>
 </html>
