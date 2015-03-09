@@ -10,6 +10,7 @@ require "awesome_print"
 require File.expand_path("./static_middleware.rb", "middleware")
 require File.expand_path("./session_middleware.rb", "middleware")
 require File.expand_path("./store.rb", "app")
+require File.expand_path("./init_products.rb", "app")
 
 use Static
 use Session

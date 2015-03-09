@@ -41,7 +41,6 @@
             url: '/order',
             data: 'name=' + name + '&mail=' + mail,
             success: function(data) {
-                debugger
                 window.location.href = 'order';
             }
         });

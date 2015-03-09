@@ -1,4 +1,5 @@
 require "securerandom"
+require_relative '../app/cart.rb'
 
 class Session
 
@@ -13,14 +14,14 @@ class Session
     token = request.cookies["AUTH_TOKEN"]
     if token && @@session[token]
       @@session[token]["counter"] = @@session[token]["counter"] + 1
-      env['session_counter'] = @@session[token]["counter"]
-      env['last_visit'] = @@session[token]["visit_time"]
+      env['data'] = @@session[token]
       @@session[token]["visit_time"] = Time.now.strftime("%d/%m/%Y %H:%M:%S").to_s
       @nnext.call(env)
     else
       token = create_key
       time = Time.now.strftime("%d/%m/%Y %H:%M:%S").to_s
       @@session[token] = { "counter" => 1, "visit_time" =>  time }
+      env['data'] = @@session[token]
       status, headers, body = @nnext.call(env)
       [status, headers.merge({"Set-Cookie" => "AUTH_TOKEN="+token+"; Path=/;"}), body]
     end

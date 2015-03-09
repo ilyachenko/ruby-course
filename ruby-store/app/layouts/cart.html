@@ -3,7 +3,7 @@
 	<% @products.each do |k,v| %>
 		<div>
 			<div>
-			<a href='<%= k.name %>'><%= k.name %></a> (Value: <%= v %> Pay: <%= v * k.price %>$) 
+			<a href='<%= k.name %>'><%= k.name %></a> (Value: <%= v %> Pay: <%= k.price * v %>$) 
 			<a href="#" data-id="<%= k.name %>" class="cart_remove_prod" style="color: rgb(255, 149, 149);">remove</a>
 			</div>
 		</div>
