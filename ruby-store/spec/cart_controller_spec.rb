@@ -17,14 +17,15 @@ describe CartController do
     body = cart_controller.call(env)[2][0]
     expect(body).to match( "Cart is empty" )
 
-    # product1.save
-    # env['params'] = { 'name' => 'Name1' }
-    # env['action'] = :add_product
-    # cart_controller.call(env)
+    product1.save
+    env['rack.input'] = {}
+    env['params'] = { 'name' => 'Name1' }
+    env['action'] = :add_product
+    cart_controller.call(env)
 
-    # env['action'] = :show_products
-    # body = cart_controller.call(env)[2][0]
-    # expect(body).to match( "Cart is empty" )
+    env['action'] = :show_products
+    body = cart_controller.call(env)[2][0]
+    expect(body).to match( "Name1" )
   end
 
 end

@@ -5,8 +5,9 @@ require_relative '../cart.rb'
 class CartController < Controller
 
   def cart
-    @env['data']['cart'] = Cart.new unless @env['data']['cart']
-    @env['data']['cart']
+    # @env['data']['cart'] = Cart.new unless @env['data']['cart']
+    # @env['data']['cart']
+    @env['data']['cart'] ||= Cart.new
   end
 
   def show_products
@@ -16,8 +17,6 @@ class CartController < Controller
   end
 
   def add_product
-
-    p params['name']
     product = Product.find(params['name'])
 
     if product

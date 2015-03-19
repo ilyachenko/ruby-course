@@ -1,0 +1,16 @@
+Установка и запуск:
+
+apt-get install libsqlite3-dev
+
+в Gemfile надо раскоментить
+gem 'therubyracer', :platforms => :ruby
+и бандл ещё раз азпустить
+
+sudo apt-get install libv8-dev
+
+apt-cache search libpq - поиск в репе
+sudo apt-get install libpq-dev
+
+rails generate controller products
+
+rails s
